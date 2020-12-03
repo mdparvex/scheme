@@ -1,0 +1,18 @@
+**A function called gcd that takes two parameters: a and b and then returns the value of
+the greatest common divisor (gcd) of a and b. You must implement Euclid’s algorithm
+(taught in CSE173) for this purpose. Sample command => output: (display (gcd 24 36)) => 12
+**
+**soloution**
+
+(define (getReminder a b)
+    (- a (* b (floor (/ a b))))
+
+)
+
+(define (gcd x y)
+  (if (= y 0) x
+    (gcd y (getReminder x y))
+  )
+
+)
+(display (gcd 24 36))

@@ -1,0 +1,32 @@
+**A function called sort that takes a list; then returns a sorted list using the SelectionSort
+algorithm (taught in CSE225). Sample command => output: (display (sort ‘(5 4 1 2 8 7)))
+=> (1 2 4 5 7 8)
+**
+
+**Soloution**
+
+(define (sort x)
+  (cond 
+    ((null? x) x)
+    ((null? (cdr x)) x)
+    (else
+    (cons (getMinimunNumber x) (sort (afterRemove (getMinimunNumber x) x))))
+    ))
+
+(define (getMinimunNumber x)
+  (cond
+    ((null? (cdr x)) (car x))
+    ((< (car x) (getMinimunNumber (cdr x))) (car x)) 
+    (else
+    (getMinimunNumber (cdr x))
+    )))
+
+(define (afterRemove a x)
+  (cond
+    ((null? x) '())
+    ((eq? (car x) a) (cdr x))
+    (else
+    (cons (car x) (afterRemove a (cdr x))))))
+
+
+(display (sort '(4 6 3 7 8 2 3)))

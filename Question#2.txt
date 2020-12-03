@@ -1,0 +1,27 @@
+**A function called sumOfDigits that takes n as a parameter and then returns the sum of
+odd digits present in n; for example, the sum of odd digits of 54672 = 5+7= 12. Sample
+command => output: (display (sumOfDigits 54672)) => 12
+**
+**Soloution**
+
+(define (sumOfDigits x)
+  (if (< x 10) x
+    (if (not (= 0 (mod (getReminder x 10) 2))) (+ (getReminder x 10) (sumOfDigits(nextNum x)))
+      (sumOfDigits (nextNum x))
+    
+    )
+  
+  )
+
+
+)
+(define (nextNum n)
+  (/ (- n (getReminder n 10)) 10)
+)
+
+
+(define (getReminder a b)
+    (- a (* b (floor (/ a b))))
+
+)
+(display (sumOfDigits 54672))
